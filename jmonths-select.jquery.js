@@ -22,7 +22,7 @@ $.fn.months_selector = function(options){
         months.push(
             "<li class='month' data-month='" +
             year + "-" + month +
-            "'>" + month + "</li>"
+            "'>" + ('0' + month).slice(-2) + "</li>"
         );
         if(month == 1 || m == 1){
             $this.append(
