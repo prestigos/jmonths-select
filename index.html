@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>jmonths-select :: JQuery month selector</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="jmonths-select.css" rel="stylesheet">
+    <style type="text/css">
+        /* Layout */
+        body {
+            padding-top: 20px;
+            padding-bottom: 40px;
+        }
+        .container {
+            margin: 0 auto;
+            max-width: 940px;
+        }
+        .container-narrow > hr {
+            margin: 30px 0;
+        }
+        .masthead p{
+            height: 40px;
+            line-height: 40px;
+        }
+        .footer p{
+            text-align: center;
+        }
+        #selector{
+            margin-top: 1em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="masthead">
+            <p class="pull-right">A jQuery plugin for month range selection</p>
+            <h3 class="muted">jmonths-select</h3>
+        </div>
+        <hr/>
+        <div class="row">
+            <div class="span6">
+                <h4>Very simple to use</h4>
+                <pre class="prettyprint">
+
+$('#selector').months_selector({
+    start: 2011,
+    years: 4
+});
+                </pre>
+            </div>
+            <div class="span6" id="selector"></div>
+        </div>
+        <hr/>
+        <div class="footer">
+            <p>&copy; 2013 - Prestigos</p>
+        </div>
+    </div>
+    <script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js"></script>
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="jmonths-select.jquery.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('#selector').months_selector({years: 4, start: 2011});
+        });
+    </script>
+</body>
+</html>
