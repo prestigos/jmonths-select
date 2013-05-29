@@ -4,8 +4,9 @@ $.fn.months_selector = function(options){
 
     // Default settings
     var settings = $.extend({
-        years: 1,
-        start: new Date().getFullYear(),
+        months: new Date().getMonth() + 1,
+        start_year: new Date().getFullYear(),
+        start_month: new Date().getMonth() + 1,
         field: 'months'
     }, options);
 
@@ -14,21 +15,26 @@ $.fn.months_selector = function(options){
     $this.append($field);
 
     // Widget generation
-    for(var y=0; y<settings.years; ++y){
-        var months = [];
-        year = settings.start + y;
-        var month;
-        for(m = 0; m < 12; ++m){
-            month = m + 1;
-            months.push(
-                "<li class='month' data-month='" +
-                year + "-" + month +
-                "'>" + month + "</li>"
-            );
-        }
-        $this.append(
-            "<ul class='year'><li class='year-label'>" + year + "</li>" + months.join('') + "</ul>"
+    var months = [];
+    var year = settings.start_year;
+    var month = settings.start_month;
+    for(var m=settings.months; m>0; --m){
+        months.push(
+            "<li class='month' data-month='" +
+            year + "-" + month +
+            "'>" + month + "</li>"
         );
+        if(month == 1 || m == 1){
+            $this.append(
+                "<ul class='year'><li class='year-label'>" + year + "</li>" + months.join('') + "</ul>"
+            );
+            months = [];
+            month = 12;
+            year -= 1
+        }
+        else{
+            month--;
+        }
     }
 
     var active = '';
