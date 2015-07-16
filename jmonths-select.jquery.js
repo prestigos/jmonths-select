@@ -5,7 +5,7 @@
   'use strict';
 
   $.fn.months_selector = function (options, arg) {
-    var $this, $field, update_selection, months, year, month, cls, m, settings;
+    var $this, $field, today, update_selection, months, year, month, cls, m, settings;
 
     $this = this;
 
@@ -20,10 +20,11 @@
 
     if (options && typeof options === 'object') {
       // Default settings
+      today = new Date();
       settings = $.extend({
-        months: new Date().getMonth() + 1,
-        start_year: new Date().getFullYear(),
-        start_month: new Date().getMonth() + 1,
+        months: today.getMonth() + 1,
+        start_year: today.getFullYear(),
+        start_month: today.getMonth() + 1,
         field: 'months',
         special: []
       }, options);
