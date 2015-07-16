@@ -1,7 +1,6 @@
 .month{
-    background-color: #FEFEFE;
-    width: 26px;
-    border: solid 1px #444;
+    background-color: #ECF0F1;
+    width: 15px;
     transition-duration: 0.5s;
     border-radius: 2px;
     text-align: center;
@@ -10,24 +9,28 @@
     cursor: pointer;
 }
 .year-label{
-    margin-right: 6px !important;
+    margin-right: 2px !important;
+    margin-left: 2px !important;
+    font-weight: bold;
 }
 .year li{
-    height: 26px;
-    line-height: 26px;
-    margin-right: 5px;
+    height: 15px;
+    line-height: 16px;
+    margin-right: 1px;
     float: left;
+    font-size: 12px;
 }
 .year{
     list-style: none;
     display: block;
-    clear: left;
-    padding-top: 0.5em;
+    float: left;
+    margin: 0;
 }
 .selected{
-    background-color: #9d261d;
-    background-image: linear-gradient(to bottom, #ee5f5b, #bd362f);
-    border-color: #bd362f;
+    background-color: #1ABC9C;
     color: #FFF;
 }
-
+.special{
+    border-color: #00cc6d;
+    background-color: #e2f4e2;
+}
