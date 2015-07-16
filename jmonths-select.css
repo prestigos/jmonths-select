@@ -1,36 +1,36 @@
-.month{
-    background-color: #ECF0F1;
-    width: 15px;
-    transition-duration: 0.5s;
-    border-radius: 2px;
-    text-align: center;
+.month {
+  background-color: #ECF0F1;
+  width: 15px;
+  transition-duration: 0.5s;
+  border-radius: 2px;
+  text-align: center;
 }
-.month, .year-label{
-    cursor: pointer;
+.month, .year-label {
+  cursor: pointer;
 }
-.year-label{
-    margin-right: 2px !important;
-    margin-left: 2px !important;
-    font-weight: bold;
+.year-label {
+  margin-right: 2px !important;
+  margin-left: 2px !important;
+  font-weight: bold;
 }
-.year li{
-    height: 15px;
-    line-height: 16px;
-    margin-right: 1px;
-    float: left;
-    font-size: 12px;
+.year li {
+  height: 15px;
+  line-height: 16px;
+  margin-right: 1px;
+  float: left;
+  font-size: 12px;
 }
-.year{
-    list-style: none;
-    display: block;
-    float: left;
-    margin: 0;
+.year {
+  list-style: none;
+  display: block;
+  float: left;
+  margin: 0;
 }
-.selected{
-    background-color: #1ABC9C;
-    color: #FFF;
+.selected {
+  background-color: #1ABC9C;
+  color: #FFF;
 }
-.special{
-    border-color: #00cc6d;
-    background-color: #e2f4e2;
+.special {
+  border-color: #00cc6d;
+  background-color: #e2f4e2;
 }
