@@ -1,0 +1,45 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<dom-module id="months-selector">
+  <style>
+    ::shadow .month {
+      background-color: #ECF0F1;
+      width: 15px;
+      transition-duration: 0.5s;
+      border-radius: 2px;
+      text-align: center;
+    }
+    ::shadow .month, ::shadow .year-label {
+      cursor: pointer;
+    }
+    ::shadow .year-label {
+      margin-right: 2px !important;
+      margin-left: 2px !important;
+      font-weight: bold;
+    }
+    ::shadow .year li {
+      height: 15px;
+      line-height: 16px;
+      margin-right: 1px;
+      float: left;
+      font-size: 12px;
+    }
+    ::shadow .year {
+      list-style: none;
+      display: block;
+      float: left;
+      margin: 0;
+    }
+    ::shadow .selected {
+      background-color: #1ABC9C;
+      color: #FFF;
+    }
+    ::shadow .special {
+      border-color: #00cc6d;
+      background-color: #e2f4e2;
+    }
+  </style>
+  <template>
+    <div id="container"></div>
+  </template>
+  <script src="months-selector.js"></script>
+</dom-module>
