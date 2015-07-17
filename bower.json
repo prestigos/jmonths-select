@@ -1,0 +1,21 @@
+{
+  "name": "months-selector",
+  "version": "0.1.0",
+  "description": "Web component to do a selection of months",
+  "license": "MIT",
+  "main": "dist/months-selector.html",
+  "keywords": [
+    "daterange",
+    "date",
+    "selection",
+    "months",
+    "month",
+    "polymer",
+    "web-components"
+  ],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components"
+  ]
+}

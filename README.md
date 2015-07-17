@@ -1,5 +1,5 @@
-# jmonths-select
+# &lt;months-selector&gt;
 
-A widget for selecting a timespan in months
+A polymer element for selecting a timespan in months
 
-Demo: [http://prestigos.github.io/jmonths-select/](http://prestigos.github.io/jmonths-select/)
+Demo: [http://prestigos.github.io/months-selector/](http://prestigos.github.io/months-selector/)
