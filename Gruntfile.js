@@ -6,7 +6,7 @@ module.exports = function (grunt) {
   grunt.initConfig({
     'jslint'  : {
       all     : {
-        src : [ 'jmonths-select.jquery.js', '*.json', 'Gruntfile.js' ],
+        src : [ 'src/months-selector.js', '*.json', 'Gruntfile.js' ],
         directives : {
           indent : 2
         }
@@ -14,7 +14,7 @@ module.exports = function (grunt) {
     },
     'uglify'  : {
       target : {
-        files : { 'jmonths-select.jquery.min.js' : 'jmonths-select.jquery.js' }
+        files : { 'dist/months-selector.min.js' : 'src/months-selector.js' }
       }
     }
   });
