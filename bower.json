@@ -17,5 +17,8 @@
     "**/.*",
     "node_modules",
     "bower_components"
-  ]
+  ],
+  "dependencies": {
+    "polymer": "~1.0.7"
+  }
 }
