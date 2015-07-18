@@ -1,6 +1,6 @@
 {
   "name": "months-selector",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Web component to do a selection of months",
   "license": "MIT",
   "main": "dist/months-selector.html",
