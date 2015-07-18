@@ -38,8 +38,9 @@ module.exports = function (grunt) {
     vulcanize: {
       default: {
         options: {
-          inline: true,
-          'strip-excludes' : false
+          excludes: [ "/bower_components/polymer/polymer.html" ],
+          inlineScripts: true,
+          stripExcludes : false
         },
         files: {
           'dist/months-selector.html' : 'dist/months-selector.html'
@@ -48,8 +49,13 @@ module.exports = function (grunt) {
     },
     clean : [ 'dist/months-selector.js' ],
     'replace': {
-      example: {
+      first: {
         src: ['src/*'],
+        dest: 'dist/',
+        replacements: []
+      },
+      second: {
+        src: ['dist/*'],
         dest: 'dist/',
         replacements: [{
           from: 'bower_components',
@@ -68,7 +74,7 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-contrib-clean');
 
   grunt.registerTask('lint',  ['jslint']);
-  grunt.registerTask('default',  ['jslint', 'replace', 'uglify', 'vulcanize', 'clean']);
+  grunt.registerTask('default',  ['jslint', 'replace:first', 'uglify', 'vulcanize', 'clean', 'replace:second']);
   grunt.registerTask('deploy', ['gh-pages']);
   grunt.registerTask('server', ['connect']);
 
