@@ -1,0 +1,46 @@
+<html><head><link rel="import" href="/../polymer/polymer.html">
+</head><body><dom-module id="months-selector">
+  <style>
+    ::shadow .month {
+      background-color: #ECF0F1;
+      width: 15px;
+      transition-duration: 0.5s;
+      border-radius: 2px;
+      text-align: center;
+    }
+    ::shadow .month, ::shadow .year-label {
+      cursor: pointer;
+    }
+    ::shadow .year-label {
+      margin-right: 2px !important;
+      margin-left: 2px !important;
+      font-weight: bold;
+    }
+    ::shadow .year li {
+      height: 15px;
+      line-height: 16px;
+      margin-right: 1px;
+      float: left;
+      font-size: 12px;
+    }
+    ::shadow .year {
+      list-style: none;
+      display: block;
+      float: left;
+      margin: 0;
+    }
+    ::shadow .selected {
+      background-color: #1ABC9C;
+      color: #FFF;
+    }
+    ::shadow .special {
+      border-color: #00cc6d;
+      background-color: #e2f4e2;
+    }
+  </style>
+  <template>
+    <div id="container"></div>
+  </template>
+  <script>!function(){"use strict";var a,b,c,d=new Date;a=Function.prototype.call.bind(Array.prototype.forEach),b=Function.prototype.call.bind(Array.prototype.reduce),c=function(a){return b(a,function(a,b){return b.active&&a.push(b.getAttribute("data-month")),a},[])},Polymer({is:"months-selector",properties:{months:{type:Number,value:d.getMonth()+1,observer:"draw"},startYear:{type:Number,value:d.getFullYear(),observer:"draw"},startMonth:{type:Number,value:d.getMonth()+1,observer:"draw"},selection:{type:Array,value:function(){return[]},observer:"setSelection"},special:{type:Array,value:function(){return[]}}},ready:function(){this.draw()},draw:function(){var b,d,e,f,g,h,i=this;if(this.selection){for(d=[],e=this.startYear,f=this.startMonth,g="month",this.$.container.innerHTML="",b=this.months;b>0;b-=1)g=this.special.indexOf(e+"-"+f)>=0?"month special":"month",d.push("<li class='"+g+"' data-month='"+e+"-"+("0"+f).slice(-2)+"'>"+("0"+f).slice(-2)+"</li>"),1===f||1===b?(this.$.container.innerHTML+='<ul class="year"><li class="year-label">'+e+"</li>"+d.join("")+"</ul>",d=[],f=12,e-=1):f-=1;h=this.$.container.querySelectorAll(".month"),a(h,function(a){a.addEventListener("click",function(){this.classList.toggle("selected"),this.active=!this.active,i.selection=c(h)})}),a(this.$.container.querySelectorAll(".year-label"),function(b){b.addEventListener("click",function(){a(b.parentNode.children,function(a){a!==b&&(a.classList.toggle("selected"),a.active=!a.active,i.selection=c(h))})})})}},setSelection:function(b){var c=this.$.container.querySelectorAll(".month");a(c,function(a){b.indexOf(a.getAttribute("data-month"))>-1?(a.classList.add("selected"),a.active=!0):(a.classList.remove("selected"),a["false"]=!0)})}})}();</script>
+</dom-module>
+</body></html>
