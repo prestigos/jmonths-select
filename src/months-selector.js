@@ -121,7 +121,7 @@
           month.active = true;
         } else {
           month.classList.remove('selected');
-          month.false = true;
+          month.active = false;
         }
       });
     }
