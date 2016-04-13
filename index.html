@@ -43,15 +43,54 @@
         <div class="row">
             <div class="span6">
                 <h4>Use:</h4>
-                <pre class="prettyprint">&lt;months-selector start-year=&quot;2013&quot; months=&quot;48&quot;&gt;&lt;/months-selector&gt;</pre>
+                <pre class="prettyprint">&lt;months-selector start-year=&quot;2016&quot; months=&quot;48&quot;&gt;&lt;/months-selector&gt;</pre>
+                <h4>Current selection:</h4>
+                <span id="example"></span>
             </div>
-            <months-selector start-year="2013" months="48"></months-selector>
+            <months-selector id="monthsSelector" start-year="2016" months="48"></months-selector>
+        </div>
+        <div class="row">
+            <div class="span6">
+                <h4>Use `actions` property for reset/selectAll months:</h4>
+                <pre class="prettyprint">&lt;months-selector start-year=&quot;2016&quot; months=&quot;48&quot; actions&gt;&lt;/months-selector&gt;</pre>
+                <h4>Current selection:</h4>
+                <span id="example1"></span>
+            </div>
+            <months-selector id="monthsSelector1" start-year="2016" months="48" actions></months-selector>
         </div>
         <hr/>
+        <div class="row">
+            <div>
+                <h2>Atributes</h2>
+                <h4>selection<small>Array: Current selecion of Dates</small></h4>
+                <h5>Example</h5>
+                <span>["2015-12","2015-11","2015-10","2015-09","2015-08","2015-07","2015-05","2015-04","2015-03","2015-02","2015-01"]</span>
+                <h4>hideMonths<small>Array: Dates (YYYY-MM) if you dont display in selection values</small></h4>
+                <h5>Example</h5>
+                <span>["2016-01", "2016-02", "2015-06"]</span>
+            </div>
+        </div>
         <div class="footer">
-            <p>&copy; 2015 - Prestigos</p>
+            <p>&copy; 2016 - Prestigos</p>
         </div>
     </div>
+    <script>
+      var monthsSelector = document.querySelector('#monthsSelector'),
+        monthsSelector1 = document.querySelector('#monthsSelector1'),
+        forExample = document.querySelector('#example'),
+        forExample1 = document.querySelector('#example1');
+
+      monthsSelector.hideMonths = ['2016-01', '2016-02', '2015-06'];
+      monthsSelector1.hideMonths = ['2014-01', '2012-12', '2015-05'];
+
+      monthsSelector.addEventListener('click', function () {
+        forExample.innerHTML = JSON.stringify(monthsSelector.selection);
+      });
+      monthsSelector1.addEventListener('click', function () {
+        forExample1.innerHTML = JSON.stringify(monthsSelector1.selection);
+      });
+
+    </script>
     <script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js"></script>
 </body>
 </html>
