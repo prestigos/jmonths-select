@@ -10,7 +10,7 @@
 
   update_selection = function (months) {
     return reduce(months, function (active, month) {
-      if (month.active && month.enabled === undefined) {
+      if (month.active) {
         active.push(month.getAttribute('data-month'));
       }
       return active;
