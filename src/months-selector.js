@@ -17,6 +17,8 @@
     }, []);
   };
 
+
+
   Polymer({
     is : 'months-selector',
 
@@ -36,12 +38,22 @@
         value : today.getMonth() + 1,
         observer : 'draw'
       },
+      actions: {
+        type: Boolean
+      },
       selection : {
         type : Array,
         value : function () {
           return [];
         },
         observer : 'setSelection'
+      },
+      hideMonths : {
+        type : Array,
+        value : function () {
+          return [];
+        },
+        observer : 'invisibleMonth'
       },
       special : {
         type : Array,
@@ -56,7 +68,8 @@
     },
 
     draw : function () {
-      var m, months, year, month, cls, all_months, that = this;
+      var m, months, year, month, cls, all_months, that = this, isDown,
+        resetButton, reset, selectAll, ul, li;
 
       // The element is not fully created yet.
       if (!this.selection) {
@@ -90,13 +103,23 @@
           month -= 1;
         }
       }
-
       all_months = this.$.container.querySelectorAll('.month');
       forEach(all_months, function (month) {
-        month.addEventListener('click', function () {
+        month.addEventListener('mousedown', function (e) {
+          isDown = true;
           this.classList.toggle('selected');
           this.active = !this.active;
           that.selection = update_selection(all_months);
+        });
+        month.addEventListener('mouseup', function (e) {
+          isDown = false;
+        });
+        month.addEventListener('mouseenter', function (e) {
+          if (isDown) {
+            this.classList.toggle('selected');
+            this.active = !this.active;
+            that.selection = update_selection(all_months);
+          }
         });
       });
 
@@ -110,6 +133,53 @@
             }
           });
         });
+      });
+      if (this.actions) {
+        reset = document.createElement('span');
+        selectAll = document.createElement('span');
+        ul = document.createElement('ul');
+        li = document.createElement('li');
+
+        ul.className ='actions';
+
+        reset.innerHTML = 'Unselect All Years';
+        selectAll.innerHTML = 'Select All Years';
+
+        reset.className = 'button';
+        selectAll.className = 'button';
+        li.appendChild(reset);
+        li.appendChild(selectAll);
+        ul.appendChild(li);
+
+        this.$.container.appendChild(ul);
+
+        reset.addEventListener('click', function () {
+          forEach(all_months, function (month) {
+            month.classList.remove('selected');
+            month.active = false;
+            that.selection = update_selection(all_months);
+          });
+        });
+        selectAll.addEventListener('click', function () {
+          forEach(all_months, function (month) {
+            month.classList.add('selected');
+            month.active = true;
+            that.selection = update_selection(all_months);
+          });
+        });
+      }
+    },
+
+    invisibleMonth : function (months) {
+      var all_months = this.$.container.querySelectorAll('.month');
+      forEach(all_months, function (month) {
+        forEach(months, function (noVisibleMonth) {
+          if (noVisibleMonth === month.getAttribute('data-month')) {
+            month.classList.add('noData');
+            month.enabled = true;
+          }
+        })
+        //that.selection = update_selection(all_months);
       });
     },
 
