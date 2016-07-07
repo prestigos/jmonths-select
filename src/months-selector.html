@@ -6,6 +6,10 @@
 <link rel="import" href="../bower_components/polymer/polymer.html">
 <dom-module id="months-selector">
   <style>
+    :host ::shadow {
+      color: #616165;
+      font-family: Roboto;
+    }
     ::shadow .month, ::shadow .year-label {
       -webkit-touch-callout: none;
       -webkit-user-select: none;
@@ -13,13 +17,15 @@
       -moz-user-select: none;
       -ms-user-select: none;
       user-select: none;
+
     }
     ::shadow .month {
-      background-color: #ECF0F1;
+      background: #ffffff;
       width: 15px;
       transition-duration: 0.5s;
       border-radius: 2px;
       text-align: center;
+      box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
     }
     ::shadow .month, ::shadow .year-label {
       cursor: pointer;
@@ -28,6 +34,7 @@
       margin-right: 2px !important;
       margin-left: 2px !important;
       font-weight: bold;
+
     }
     ::shadow .year li {
       height: 15px;
@@ -52,7 +59,10 @@
       list-style: none;
       display: block;
       float: left;
-      margin: 0;
+      margin-top: 3px;
+      margin-left: 0;
+      margin-bottom: 0;
+      margin-right: 0;
     }
     :host ::shadow{
       float: left;
@@ -64,11 +74,11 @@
       margin: 0;
     }
     ::shadow .noData {
-      background-color: #d10000 !important;
+      background-color: #f44336 !important;
       color: #FFF !important;
     }
     ::shadow .selected {
-      background-color: #1ABC9C;
+      background-color: #00BFA5;
       color: #FFF;
     }
     ::shadow .special {
