@@ -1,12 +1,29 @@
-<html><head><meta charset="UTF-8"><link rel="import" href="../../polymer/polymer.html">
-</head><body><dom-module id="months-selector">
+<!--
+  <months-selector>
+  @element months-selector
+  @demo https://prestigos.github.io/months-selector/
+--><html><head><meta charset="UTF-8"></head><body><dom-module id="months-selector">
   <style>
+    :host ::shadow {
+      color: #616165;
+      font-family: Roboto;
+    }
+    ::shadow .month, ::shadow .year-label {
+      -webkit-touch-callout: none;
+      -webkit-user-select: none;
+      -khtml-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+
+    }
     ::shadow .month {
-      background-color: #ECF0F1;
+      background: #ffffff;
       width: 15px;
       transition-duration: 0.5s;
       border-radius: 2px;
       text-align: center;
+      box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
     }
     ::shadow .month, ::shadow .year-label {
       cursor: pointer;
@@ -15,6 +32,7 @@
       margin-right: 2px !important;
       margin-left: 2px !important;
       font-weight: bold;
+
     }
     ::shadow .year li {
       height: 15px;
@@ -23,14 +41,42 @@
       float: left;
       font-size: 12px;
     }
+    ::shadow #container ul {
+      min-width: 250px;
+      padding-left: 10px;
+    }
+    ::shadow .button {
+      padding: 3px;
+      margin: 3px;
+      cursor: pointer;
+      border-radius: 3px;
+      border-color: #cecece;
+      background-color: #cecece;
+    }
     ::shadow .year {
+      list-style: none;
+      display: block;
+      float: left;
+      margin-top: 3px;
+      margin-left: 0;
+      margin-bottom: 0;
+      margin-right: 0;
+    }
+    :host ::shadow{
+      float: left;
+    }
+    ::shadow .actions {
       list-style: none;
       display: block;
       float: left;
       margin: 0;
     }
+    ::shadow .noData {
+      background-color: #f44336 !important;
+      color: #FFF !important;
+    }
     ::shadow .selected {
-      background-color: #1ABC9C;
+      background-color: #00BFA5;
       color: #FFF;
     }
     ::shadow .special {
@@ -41,6 +87,6 @@
   <template>
     <div id="container"></div>
   </template>
-  <script>!function(){"use strict";var a,b,c,d=new Date;a=Function.prototype.call.bind(Array.prototype.forEach),b=Function.prototype.call.bind(Array.prototype.reduce),c=function(a){return b(a,function(a,b){return b.active&&a.push(b.getAttribute("data-month")),a},[])},Polymer({is:"months-selector",properties:{months:{type:Number,value:d.getMonth()+1,observer:"draw"},startYear:{type:Number,value:d.getFullYear(),observer:"draw"},startMonth:{type:Number,value:d.getMonth()+1,observer:"draw"},selection:{type:Array,value:function(){return[]},observer:"setSelection"},special:{type:Array,value:function(){return[]}}},ready:function(){this.draw()},draw:function(){var b,d,e,f,g,h,i=this;if(this.selection){for(d=[],e=this.startYear,f=this.startMonth,g="month",this.$.container.innerHTML="",b=this.months;b>0;b-=1)g=this.special.indexOf(e+"-"+f)>=0?"month special":"month",d.push("<li class='"+g+"' data-month='"+e+"-"+("0"+f).slice(-2)+"'>"+("0"+f).slice(-2)+"</li>"),1===f||1===b?(this.$.container.innerHTML+='<ul class="year"><li class="year-label">'+e+"</li>"+d.join("")+"</ul>",d=[],f=12,e-=1):f-=1;h=this.$.container.querySelectorAll(".month"),a(h,function(a){a.addEventListener("click",function(){this.classList.toggle("selected"),this.active=!this.active,i.selection=c(h)})}),a(this.$.container.querySelectorAll(".year-label"),function(b){b.addEventListener("click",function(){a(b.parentNode.children,function(a){a!==b&&(a.classList.toggle("selected"),a.active=!a.active,i.selection=c(h))})})})}},setSelection:function(b){var c=this.$.container.querySelectorAll(".month");a(c,function(a){b.indexOf(a.getAttribute("data-month"))>-1?(a.classList.add("selected"),a.active=!0):(a.classList.remove("selected"),a.active=!1)})}})}();</script>
+  <script>!function(){"use strict";var a,b,c,d=new Date;a=Function.prototype.call.bind(Array.prototype.forEach),b=Function.prototype.call.bind(Array.prototype.reduce),c=function(a){return b(a,function(a,b){return b.active&&a.push(b.getAttribute("data-month")),a},[])},Polymer({is:"months-selector",properties:{months:{type:Number,value:d.getMonth()+1,observer:"draw"},startYear:{type:Number,value:d.getFullYear(),observer:"draw"},startMonth:{type:Number,value:d.getMonth()+1,observer:"draw"},actions:{type:Boolean},selection:{type:Array,value:function(){return[]},observer:"setSelection"},hideMonths:{type:Array,value:function(){return[]},observer:"invisibleMonth"},special:{type:Array,value:function(){return[]}}},ready:function(){this.draw()},draw:function(){var b,d,e,f,g,h,i,j,k,l,m,n=this;if(this.selection){for(d=[],e=this.startYear,f=this.startMonth,g="month",this.$.container.innerHTML="",b=this.months;b>0;b-=1)g=this.special.indexOf(e+"-"+f)>=0?"month special":"month",d.push("<li class='"+g+"' data-month='"+e+"-"+("0"+f).slice(-2)+"'>"+("0"+f).slice(-2)+"</li>"),1===f||1===b?(this.$.container.innerHTML+='<ul class="year"><li class="year-label">'+e+"</li>"+d.join("")+"</ul>",d=[],f=12,e-=1):f-=1;h=this.$.container.querySelectorAll(".month"),a(h,function(a){a.addEventListener("mousedown",function(){i=!0,this.classList.toggle("selected"),this.active=!this.active,n.selection=c(h)}),a.addEventListener("mouseup",function(){i=!1}),a.addEventListener("mouseenter",function(){i&&(this.classList.toggle("selected"),this.active=!this.active,n.selection=c(h))})}),a(this.$.container.querySelectorAll(".year-label"),function(b){b.addEventListener("click",function(){a(b.parentNode.children,function(a){a!==b&&(a.classList.toggle("selected"),a.active=!a.active,n.selection=c(h))})})}),this.actions&&(j=document.createElement("span"),k=document.createElement("span"),l=document.createElement("ul"),m=document.createElement("li"),l.className="actions",j.innerHTML="Unselect All Years",k.innerHTML="Select All Years",j.className="button",k.className="button",m.appendChild(j),m.appendChild(k),l.appendChild(m),this.$.container.appendChild(l),j.addEventListener("click",function(){a(h,function(a){a.classList.remove("selected"),a.active=!1,n.selection=c(h)})}),k.addEventListener("click",function(){a(h,function(a){a.classList.add("selected"),a.active=!0,n.selection=c(h)})}))}},invisibleMonth:function(b){var c=this.$.container.querySelectorAll(".month");a(c,function(c){a(b,function(a){a===c.getAttribute("data-month")&&(c.classList.add("noData"),c.enabled=!0)})})},setSelection:function(b){var c=this.$.container.querySelectorAll(".month");a(c,function(a){b.indexOf(a.getAttribute("data-month"))>-1?(a.classList.add("selected"),a.active=!0):(a.classList.remove("selected"),a.active=!1)})}})}();</script>
 </dom-module>
 </body></html>

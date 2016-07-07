@@ -38,7 +38,6 @@ module.exports = function (grunt) {
     vulcanize: {
       default: {
         options: {
-          excludes: [ "/bower_components/polymer/polymer.html" ],
           inlineScripts: true,
           stripExcludes : false
         },

@@ -69,7 +69,7 @@
 
     draw : function () {
       var m, months, year, month, cls, all_months, that = this, isDown,
-        resetButton, reset, selectAll, ul, li;
+        reset, selectAll, ul, li;
 
       // The element is not fully created yet.
       if (!this.selection) {
@@ -105,16 +105,16 @@
       }
       all_months = this.$.container.querySelectorAll('.month');
       forEach(all_months, function (month) {
-        month.addEventListener('mousedown', function (e) {
+        month.addEventListener('mousedown', function () {
           isDown = true;
           this.classList.toggle('selected');
           this.active = !this.active;
           that.selection = update_selection(all_months);
         });
-        month.addEventListener('mouseup', function (e) {
+        month.addEventListener('mouseup', function () {
           isDown = false;
         });
-        month.addEventListener('mouseenter', function (e) {
+        month.addEventListener('mouseenter', function () {
           if (isDown) {
             this.classList.toggle('selected');
             this.active = !this.active;
@@ -140,7 +140,7 @@
         ul = document.createElement('ul');
         li = document.createElement('li');
 
-        ul.className ='actions';
+        ul.className = 'actions';
 
         reset.innerHTML = 'Unselect All Years';
         selectAll.innerHTML = 'Select All Years';
@@ -178,7 +178,7 @@
             month.classList.add('noData');
             month.enabled = true;
           }
-        })
+        });
         //that.selection = update_selection(all_months);
       });
     },
