@@ -1,5 +1,5 @@
 /*jslint browser: true, indent: 2, newcap: true*/
-/*global Polymer*/
+/*global Polymer, Event*/
 
 (function () {
   'use strict';
