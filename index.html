@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.0/css/bootstrap.min.css" rel="stylesheet">
 
-    <link rel="import" href="../bower_components/polymer/polymer.html">
+    <link rel="import" href="/bower_components/polymer/polymer.html">
     <link rel="import" href="src/months-selector.html">
     <style type="text/css">
         /* Layout */
@@ -88,6 +88,10 @@
       });
       monthsSelector1.addEventListener('click', function () {
         forExample1.innerHTML = JSON.stringify(monthsSelector1.selection);
+      });
+
+      monthsSelector.addEventListener('change selection', function (e) {
+        console.log(e.detail);
       });
 
     </script>

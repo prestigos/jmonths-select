@@ -184,7 +184,8 @@
     },
 
     setSelection : function (selection) {
-      var all_months = this.$.container.querySelectorAll('.month');
+      var all_months = this.$.container.querySelectorAll('.month'),
+        changeEvents = new Event('change selection');
       forEach(all_months, function (month) {
         if (selection.indexOf(month.getAttribute('data-month')) > -1) {
           month.classList.add('selected');
@@ -194,6 +195,8 @@
           month.active = false;
         }
       });
+      changeEvents.detail = selection;
+      this.dispatchEvent(changeEvents);
     }
   });
 }());
